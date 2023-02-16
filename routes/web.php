@@ -1,9 +1,13 @@
 <?php
 
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ChirpController;
+use App\Http\Controllers\UserController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
+use App\Models\Customer;
 use Inertia\Inertia;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -33,3 +37,7 @@ Route::resource('chirps', ChirpController::class)
     ->middleware(['auth', 'verified']);
 
 require __DIR__.'/auth.php';
+
+Route::get('/users',[UserController::class, 'index']);
+Route::get( '/users/{id}',[UserController::class, 'show']);
+Route::get('/customers', [CustomerController::class, 'index']);
